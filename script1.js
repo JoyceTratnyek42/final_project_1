@@ -135,26 +135,93 @@ const apiData = fetch(url)
 
     // Use filteredData for your needs
     console.log(filteredData);
-  });
+
+
+	//loop through each data point and calculate the distance between it and the user location
+	//log the distances and see those numbers
+	function calculateDistance(lat1, lon1, lat2, lon2) {
+		const R = 6371; // Earth radius in kilometers
+		const dLat = (lat2 - lat1) * Math.PI / 180;
+		const dLon = (lon2 - lon1) * Math.PI / 180;
+		const a =
+		  Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+		  Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
+		  Math.sin(dLon / 2) * Math.sin(dLon / 2);
+		const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+		const distance = R * c; // Distance in kilometers
+		return distance;
+	  }
+	  
+	  fetch(url)
+		.then(response => response.json())
+		.then(data => {
+		  const userLat = 40.712776; // User input latitude
+		  const userLon = -74.005974; // User input longitude
+	  
+
+	  
+		  // Loop through the filtered data and calculate the distance to the user
+		  filteredData.forEach((item, index) => {
+			const distance = calculateDistance(userLat, userLon, item.latitude, item.longitude);
+			console.log(`Distance to ${index+1}: ${distance} km`);
+
+			// Distance is a number between 0 and 1 (roughly)
+
+
+			//create element 
+			const element = document.createElement('div')
+			element.classList.add('incident')
+
+			//position element based on distance
+			const screenDistance = 700 * distance
+			const randomAngle = Math.random() * Math.PI * 2
+
+			console.log('random angle', randomAngle)
+
+			// Calculate x value based on angle
+			const x = Math.cos(randomAngle) * screenDistance
+			const y = Math.sin(randomAngle) * screenDistance
+
+			element.style.transform = `translate(${x}px, ${y}px) scale(${Math.random() + 1})`
+
+			//add element to page
+			document.body.appendChild(element)
+
+			
+		  });
+		});
+	  
 
 // Haversine formula for calculating distance between two points
 function getDistanceFromLatLonInKm(lat1, lon1, lat2, lon2) {
-  const earthRadius = 6371; // Radius of the earth in km
-  const dLat = deg2rad(lat2 - lat1);  // deg2rad below
-  const dLon = deg2rad(lon2 - lon1);
-  const a = 
-    Math.sin(dLat/2) * Math.sin(dLat/2) +
-    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
-    Math.sin(dLon/2) * Math.sin(dLon/2)
-    ; 
-  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
-  const distance = earthRadius * c; // Distance in km
-  return distance;
-}
+	const earthRadius = 6371; // Radius of the earth in km
+	const dLat = deg2rad(lat2 - lat1);  // deg2rad below
+	const dLon = deg2rad(lon2 - lon1);
+	const a = 
+	  Math.sin(dLat/2) * Math.sin(dLat/2) +
+	  Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+	  Math.sin(dLon/2) * Math.sin(dLon/2)
+	  ; 
+	const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+	const distance = earthRadius * c; // Distance in km
+	return distance;
+  }
+  
+  function deg2rad(deg) {
+	return deg * (Math.PI/180)
+  }
 
-function deg2rad(deg) {
-  return deg * (Math.PI/180)
-}
+  
+  
+  });
+
+  
+
+
+
+
+
+  
 
 
 

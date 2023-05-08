@@ -1,2 +1,118 @@
 
+@font-face {
+    font-family: 'Apple LiGothic';
+    src: url('LiGothicMed.woff2') format('woff2'),
+        url('LiGothicMed.woff') format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+
+
+.incident {
+    position: fixed;
+    top: calc(50% - 50px); /* offset back to the center */
+    left: calc(50% - 50px); 
+    height: 100px;
+    width:100px;
+    background-color: rgba(0, 34, 154, 0.51);
+    border-radius: 50%;
+}
+
+button.block {
+
+color: white;
+background-color: black;
+height:100px;
+width:900px;
+font-size: 50px;
+border-radius: 90px;
+text-align: center;
+font-family: 'Apple LiGothic', sans-serif;
+position: fixed;
+left:200px;
+bottom: 40px;
+padding-bottom: 10%;
+
+
+}
+
+
+button.arrows {
+
+    color: white;
+    background-color: black;
+    text-align: center;
+    font-family: 'Apple LiGothic', sans-serif;
+    border-radius: 80px;
+    padding-bottom: 1%;
+    padding: 1%;
+    font-size: 25px;
+    padding-top: 0%;
+   
+    
+    
+    }
+
+
+    button.home {
+
+        color: white;
+        background-color: black;
+        text-align: center;
+        font-family: 'Apple LiGothic', sans-serif;
+        height:30px;
+        width:90px;
+        font-size: 15px;
+        border-radius: 90px;
+        text-align: center;
+        font-family: 'Apple LiGothic', sans-serif;
+        position: fixed;
+        left:20px;
+        bottom:20px;
+        padding: 1%;
+        padding:0%;
+        padding-bottom: 3%;
+
+       
+       
+        
+        
+        }
   
+
+h1 {
+
+    font-family: 'Apple LiGothic', sans-serif;
+    font-size: 50px;
+    position: relative;
+    left: 25%;
+    top:20%;
+}
+
+h2 {
+
+    font-family: 'Apple LiGothic', sans-serif;
+    width: 40%;
+    position: relative;
+    left:28%;
+    text-align: center;
+}
+
+body {
+
+    font-family: 'Apple LiGothic', sans-serif;
+}
+
+
+.para {
+
+    font-family: 'Apple LiGothic', sans-serif;
+    text-align: right;
+    width: 20%;
+    position: fixed;
+    right: 5%;
+    top: 5%;
+
+}
